@@ -1,0 +1,30 @@
+package com.bcit.myapp.ui.main
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.bcit.myapp.data.LocalBook
+
+@Composable
+fun BookCard(localBook: LocalBook, navController: NavController) {
+    Card(
+        modifier = Modifier
+            .padding(5.dp)
+            .height(120.dp)
+            .fillMaxWidth(),
+        onClick = { navController.navigate("info/${localBook.id}") }
+    ) {
+        Column(Modifier.padding(10.dp)) {
+            Text(localBook.title,   fontSize = 24.sp)
+            Text(localBook.displayAuthorName, fontSize = 18.sp)
+        }
+    }
+}
